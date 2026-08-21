@@ -1,0 +1,38 @@
+﻿/* Abstracts */
+@use "abstracts/variables" as *;
+@use "abstracts/spacing" as *;
+@use "abstracts/breakpoints" as *;
+
+/* Base */
+@use "base/reset" as *;
+@use "base/typography" as *;
+@use "base/layout" as *;
+
+/* Layout */
+@use "layout/header" as *;
+@use "layout/footer" as *;
+
+/* Components */
+@use "components/hero-slider" as *;
+@use "components/hero-image" as *;
+@use "components/preview-slider" as *;
+
+/* Modules */
+@use "modules/search-overlay" as *;
+@use "modules/shame" as *;
+
+/* Pages */
+@use "pages/home" as *;
+@use "pages/single" as *;
+@use "pages/educacao" as *;
+@use "pages/graduacao" as *;
+@use "pages/postgraduate" as *;
+@use "pages/single-graduation" as *;
+@use "pages/search" as *;
+@use "pages/sobre" as *;
+@use "pages/administracao" as *;
+@use "pages/docentes" as *;
+@use "pages/servidores" as *;
+@use "pages/department" as *;
+@use "pages/research" as *;
+@use "pages/editorial-content" as *;

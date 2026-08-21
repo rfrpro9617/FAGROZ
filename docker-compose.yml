@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress-dev
+    restart: unless-stopped
+
+    ports:
+      - "8081:80"
+
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppassword
+
+    volumes:
+      # O conteúdo do diretório atual (themes, plugins, uploads etc.) é montado dentro do wp-content do container
+      - .:/var/www/html/wp-content
+
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-dev
+    restart: unless-stopped
+
+    ports:
+      - "3307:3306"
+
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppassword
+      MYSQL_ROOT_PASSWORD: rootpassword
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:

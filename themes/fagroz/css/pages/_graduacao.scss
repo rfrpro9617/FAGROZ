@@ -1,0 +1,132 @@
+.graduacao-section {
+  padding-top: clamp(3rem, 4vw, 5rem);
+}
+
+.graduacao-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 2vw, 2.5rem);
+}
+
+.graduacao-text {
+  flex: 1 1 clamp(280px, 38%, 520px);
+  max-width: 560px;
+}
+
+.graduacao-text h2 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2rem, 2.5vw + 0.5rem, 3rem);
+  line-height: 1.1;
+  color: #111;
+}
+
+.graduacao-text p {
+  margin: 0 0 2rem;
+  max-width: 42ch;
+  font-size: clamp(1rem, 1vw + 0.05rem, 1.125rem);
+  line-height: 1.8;
+  color: #4f555d;
+}
+
+.graduacao-image {
+  flex: 1 1 clamp(300px, 56%, 640px);
+  max-width: 720px;
+}
+
+.graduacao-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 24px;
+  min-height: 240px;
+}
+
+.btn-graduacao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: clamp(0.85rem, 1vw, 1rem) clamp(1.2rem, 2vw, 1.6rem);
+  background: #f2c500;
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: clamp(0.95rem, 0.95vw, 1.05rem);
+  border-radius: 999px;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.btn-graduacao:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1200px) {
+  .graduacao-row {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .graduacao-text {
+    flex: 1 1 42%;
+  }
+
+  .graduacao-image {
+    flex: 1 1 54%;
+  }
+}
+
+@media (max-width: 768px) {
+  .graduacao-section {
+    padding-top: 2.5rem;
+  }
+
+  .graduacao-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .graduacao-text,
+  .graduacao-image {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .graduacao-text {
+    order: 1;
+  }
+
+  .graduacao-image {
+    order: 2;
+  }
+
+  .graduacao-image img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .btn-graduacao {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 576px) {
+  .graduacao-row {
+    gap: 1.5rem;
+  }
+
+  .graduacao-text h2 {
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
+  }
+
+  .graduacao-text p {
+    font-size: clamp(0.95rem, 3vw, 1.05rem);
+  }
+
+  .btn-graduacao {
+    width: 100%;
+    justify-content: center;
+  }
+}

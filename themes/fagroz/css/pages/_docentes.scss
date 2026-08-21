@@ -1,0 +1,5 @@
+// Importa os estilos compartilhados para páginas de listas de pessoas
+@use "people-list" as *;
+
+// Aplica o mixin de estilos compartilhados para a página de docentes
+@include people-list-styles("docentes");

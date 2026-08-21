@@ -1,0 +1,224 @@
+﻿@use "../abstracts" as *;
+.education-section {
+  padding-top: clamp(3rem, 5vw, 6rem);
+}
+
+.education-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 1.05fr);
+  gap: clamp(2rem, 4vw, 4.5rem);
+  align-items: center;
+}
+
+.education-text {
+  max-width: 42rem;
+}
+
+.education-text h2 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  line-height: 1.08;
+  color: $black;
+}
+
+.education-text p {
+  margin: 0 0 2rem;
+  max-width: 42ch;
+  line-height: 1.85;
+  color: $brown-dark-100;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+}
+
+.education-image {
+  width: 100%;
+}
+
+.education-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.btn-education {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1rem 1.8rem;
+  background: $yellow-100;
+  color: $black;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 999px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.btn-education:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.research-section {
+  padding: clamp(4rem, 6vw, 6rem) 0;
+}
+
+.research-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.research-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.research-text {
+  max-width: 760px;
+}
+
+.research-text h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  line-height: 1.08;
+  color: $black;
+}
+
+.research-text p {
+  margin: 0;
+  color: $gray-dark;
+  line-height: 1.9;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+}
+
+@media (max-width: $breakpoint-xl) {
+  .education-row {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .education-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: min(42rem, 100%);
+    margin-inline: auto;
+  }
+
+  .education-text h2,
+  .education-text p {
+    text-align: center;
+  }
+
+  .education-image {
+    width: min(100%, 42rem);
+  }
+
+  .btn-education {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: $breakpoint-lg) {
+  .education-section,
+  .research-section {
+    padding-top: clamp(3rem, 5vw, 5rem);
+  }
+
+  .education-text h2,
+  .research-text h2 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+  }
+
+  .education-text p,
+  .research-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .education-row {
+    gap: 2rem;
+  }
+
+  .education-text {
+    max-width: 100%;
+  }
+
+  .education-image {
+    width: 100%;
+  }
+
+  .btn-education {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .research-inner {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .education-section,
+  .research-section {
+    padding-top: 2.5rem;
+  }
+
+  .education-text h2,
+  .research-text h2 {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+  }
+
+  .education-text p,
+  .research-text p {
+    line-height: 1.75;
+  }
+
+  .research-inner {
+    gap: 1.25rem;
+  }
+
+  .btn-education {
+    padding: 0.95rem 1.2rem;
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: $breakpoint-xs) {
+  .education-section,
+  .research-section {
+    padding-top: 2rem;
+  }
+
+  .education-text h2,
+  .research-text h2 {
+    font-size: clamp(1.85rem, 7vw, 2.4rem);
+  }
+
+  .education-text p,
+  .research-text p {
+    font-size: 0.98rem;
+  }
+
+  .btn-education {
+    width: 100%;
+  }
+}

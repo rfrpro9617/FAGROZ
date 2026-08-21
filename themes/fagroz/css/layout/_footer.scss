@@ -1,0 +1,318 @@
+﻿@use "../abstracts" as *;
+.site-footer {
+  background: $brown-dark-100;
+  color: $white;
+  padding: 3rem 2rem;
+  margin-top: auto;
+
+  .site-footer__inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .site-footer__content {
+    display: grid;
+    grid-template-columns: minmax(280px, 1.5fr) minmax(180px, 0.9fr) minmax(200px, 1fr) minmax(140px, 0.9fr);
+    gap: 3rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba($white, 0.2);
+    align-items: flex-start;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .site-footer__col-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    grid-column: 1;
+  }
+
+  .site-footer__col-access {
+    grid-column: 2;
+  }
+
+  .site-footer__col-contact {
+    grid-column: 3;
+  }
+
+  .site-footer__col-social {
+    grid-column: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 1024px) {
+    .site-footer__content {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .site-footer__col-logo {
+      grid-column: 1 / -1;
+      text-align: center;
+      align-items: center;
+    }
+
+    .site-footer__col-access {
+      grid-column: 1;
+    }
+
+    .site-footer__col-contact {
+      grid-column: 2;
+    }
+
+    .site-footer__col-social {
+      grid-column: 1 / -1;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .site-footer__social-list {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .site-footer__content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .site-footer__col-logo,
+    .site-footer__col-access,
+    .site-footer__col-contact,
+    .site-footer__col-social {
+      grid-column: auto;
+      text-align: center;
+      align-items: center;
+    }
+
+    .site-footer__social-list {
+      justify-content: center;
+    }
+  }
+
+  .site-footer__logo {
+    a {
+      text-decoration: none;
+      color: $white;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+
+      // Efeito de cortina que abre e fecha
+      .site-footer__logo-image {
+        display: block;
+        transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        clip-path: inset(0 0 0 0);
+      }
+
+      // Cortina que "fecha" da direita para esquerda
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $brown-dark-100;
+        z-index: 2;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scaleX(0);
+        transform-origin: right;
+      }
+
+      // Cortina que "fecha" da esquerda para direita
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: $brown-dark-100;
+        z-index: 2;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+      &:hover {
+        &::before {
+          transform: scaleX(0.5);
+          transform-origin: left;
+        }
+
+        &::after {
+          transform: scaleX(0.5);
+          transform-origin: right;
+        }
+      }
+    }
+  }
+
+  .site-footer__logo-text {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .site-footer__logo-image {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    display: block;
+
+    @media (max-width: 600px) {
+      max-width: 240px;
+    }
+  }
+
+  // Remove old text logo styles
+  .site-footer__logo-subtitle,
+  .site-footer__logo-institution {
+    display: none;
+  }
+
+  .site-footer__heading {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+  }
+
+  .site-footer__nav {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      transition: all 0.25s ease;
+      opacity: 0.9;
+      font-weight: 400; // Peso normal
+      display: inline-block; // Necessário para o transform não causar pulos
+
+      &:hover {
+        opacity: 1;
+        font-weight: 700; // Negrito no hover
+        transform: scale(1.02); // Pequeno aumento para compensar o bold
+      }
+    }
+  }
+
+  .site-footer__col-contact {
+    .site-footer__contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .site-footer__address {
+      opacity: 0.9;
+    }
+
+    .site-footer__phone,
+    .site-footer__about {
+      a {
+        color: $white;
+        text-decoration: none;
+        transition: all 0.25s ease;
+        opacity: 0.9;
+        font-weight: 400; // Peso normal
+        display: inline-block; // Necessário para o transform não causar pulos
+
+        &:hover {
+          opacity: 1;
+          font-weight: 700; // Negrito no hover
+          transform: scale(1.02); // Pequeno aumento para compensar o bold
+        }
+      }
+    }
+  }
+
+  .site-footer__social-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .site-footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba($white, 0.15);
+    border-radius: 6px;
+    color: $white;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    font-size: 1.5rem;
+
+    &:hover {
+      background: rgba($white, 0.25);
+      transform: translateY(-2px);
+    }
+
+    &--youtube:hover {
+      background: #ff0000;
+    }
+
+    &--facebook:hover {
+      background: #1877f2;
+    }
+
+    &--instagram:hover {
+      background: linear-gradient(45deg,
+          #f09433 0%,
+          #e6683c 25%,
+          #dc2743 50%,
+          #cc2366 75%,
+          #bc1888 100%);
+    }
+  }
+
+  .site-footer__bottom {
+    text-align: center;
+    border-top: 1px solid rgba($white, 0.2);
+    padding-top: 2rem;
+  }
+
+  .site-footer__copyright {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+}

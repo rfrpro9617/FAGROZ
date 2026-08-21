@@ -1,0 +1,122 @@
+.search-header {
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.search-title {
+  font-size: clamp(1.75rem, 3vw, 2rem);
+  margin-bottom: .3rem;
+  font-weight: normal;
+}
+
+.search-query {
+  font-size: clamp(1.1rem, 2.5vw, 1.375rem);
+  margin: 0 0 .75rem;
+}
+
+.search-count {
+  color: #666;
+  font-size: clamp(.8rem, 1.5vw, .875rem);
+}
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 1.875rem);
+}
+
+.search-result {
+  padding-bottom: clamp(1.25rem, 3vw, 1.5rem);
+  border-bottom: 1px solid #ddd;
+}
+
+.search-result__title {
+  margin: 0 0 .3rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.375rem);
+  font-weight: normal;
+}
+
+.search-result__title a {
+  color: #0056a6;
+  text-decoration: none;
+}
+
+.search-result__title a:hover {
+  text-decoration: underline;
+}
+
+.search-result__url {
+  color: #198754;
+  font-size: clamp(.8rem, 1.5vw, .875rem);
+  margin-bottom: .625rem;
+  word-break: break-word;
+}
+
+.search-result__excerpt {
+  color: #444;
+  line-height: 1.6;
+  font-size: clamp(.95rem, 1.8vw, 1rem);
+}
+
+.search-pagination {
+  margin-top: clamp(2rem, 5vw, 3rem);
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(.5rem, 2vw, .75rem);
+    padding-bottom: clamp(1.25rem, 3vw, 1.5rem);
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: clamp(2.5rem, 8vw, 3rem);
+    height: clamp(2.5rem, 8vw, 3rem);
+    padding: 0 clamp(.75rem, 2vw, 1rem);
+    border-radius: 999px;
+    background: #f2f2f2;
+    color: #151515;
+    text-decoration: none;
+    font-weight: 700;
+    transition: .25s;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-2px);
+      background: #e8e8e8;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .08);
+      color: #151515;
+    }
+
+    &.current,
+    &.current:hover,
+    &.current:focus-visible {
+      background: #FFCC00;
+      color: #151515;
+      transform: none;
+      box-shadow: none;
+    }
+
+    &.is-disabled {
+      opacity: .45;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .search-pagination__nav {
+    gap: .5rem;
+  }
+
+  .search-pagination__item {
+    min-width: 42px;
+    height: 42px;
+    padding: 0 .75rem;
+    font-size: .875rem;
+  }
+}

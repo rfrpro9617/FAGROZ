@@ -1,0 +1,324 @@
+﻿@use "../abstracts" as *;
+@use "../abstracts/variables" as *;
+
+.top-bar {
+  background: $brown-dark-100;
+  color: $white;
+  font-size: clamp(0.875rem, 1vw + 0.5rem, 1rem);
+  padding: 13px 0;
+
+  a {
+    color: $white;
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: $space-6;
+
+    @media (max-width: $breakpoint-md) {
+      justify-content: center;
+      gap: $space-4;
+      overflow-x: auto;
+      white-space: nowrap;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @media (max-width: $breakpoint-xs) {
+      gap: $space-3;
+    }
+  }
+}
+
+.header-main {
+  position: relative;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: $space-4;
+  }
+
+  &.mega-open {
+    background-color: $gray-light;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+
+    a {
+      text-decoration: none;
+    }
+
+    .logo-text {
+      font-size: clamp(1.3rem, 2vw, 2.1rem);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: $brown-dark-100;
+    }
+
+    .logo-subtext {
+      font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: 1px;
+      color: $brown-dark-100;
+      display: block;
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    color: $brown-dark-100;
+    z-index: 1002;
+
+    .dashicons {
+      font-size: 2rem;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .nav-search-group {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+
+    .main-nav {
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          position: static;
+        }
+
+        >li>a {
+          position: relative;
+          color: $brown-dark-100;
+          font-size: 1rem;
+          text-decoration: none;
+          padding: 8px 4px;
+          transition: color 0.25s ease;
+          white-space: nowrap;
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: $brown-dark-100;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+          }
+
+          &:hover {
+            font-weight: bold;
+
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+
+        .mega-menu {
+          position: absolute;
+          left: 0;
+          top: 100%;
+          width: 100%;
+          background: $white;
+          border-bottom: 1px solid $border-light;
+          box-shadow: 0 10px 30px $shadow-light;
+          z-index: 9999;
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition:
+            opacity 0.28s ease,
+            visibility 0.28s ease;
+
+          a {
+            display: inline-block;
+            width: fit-content;
+            text-decoration: none;
+
+            &:hover {
+              font-weight: bold;
+            }
+          }
+        }
+
+        .mega-menu.is-open {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+
+        .mega-menu__inner {
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 2.5rem 2rem;
+        }
+
+        .sub-menu {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(220px, 1fr));
+          gap: 1rem 3rem;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          >li>a {
+            color: $black;
+            display: block;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+
+    .search-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $brown-dark-100;
+      transition: color 0.25s ease;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      .iconc-search {
+        font-size: 2.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-lg) {
+  .header-main {
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-search-group {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 320px;
+      max-width: 90%;
+      height: 100vh;
+      background: $white;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 90px 24px 30px;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      box-shadow: -8px 0 25px $shadow-medium;
+      z-index: 1000;
+    }
+
+    &.menu-open {
+      .nav-search-group {
+        right: 0;
+      }
+    }
+
+    .main-nav {
+      width: 100%;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+    }
+
+    .menu>li {
+      width: 100%;
+      border-bottom: 1px solid $border-extra-light;
+    }
+
+    .menu>li>a {
+      display: block;
+      width: 100%;
+      padding: 16px 0;
+    }
+
+    .header-actions {
+      margin-top: 20px;
+    }
+
+    .mega-menu {
+      position: static !important;
+      width: 100% !important;
+      transform: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      display: none;
+      box-shadow: none;
+      border: 0;
+    }
+
+    .menu>li.open>.mega-menu {
+      display: block;
+    }
+
+    .mega-menu__inner {
+      padding: 10px 0;
+    }
+
+    .sub-menu {
+      display: flex !important;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .sub-menu-column {
+      li a {
+        padding: 12px 18px;
+      }
+    }
+  }
+}
