@@ -45,7 +45,13 @@ get_template_part('template-parts/pages/home/sections/news', null, [
 ]);
 ?>
 <?php
-get_template_part('template-parts/pages/home/sections/social-midida-news');
+$acfInstagramFeed = get_field('instagram_feed');
+$title = $acfInstagramFeed['title'] ?? '';
+$subtitle = $acfInstagramFeed['subtitle'] ?? '';
+get_template_part('template-parts/pages/home/sections/social-midida-news', null, [
+  'title' => $title,
+  'subtitle' => $subtitle
+]);
 ?>
 <?php
 $callTeachingOpportunities = get_page_by_path('pagina-configuracao-chamada-para-oportunidades-de-ensino');
