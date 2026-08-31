@@ -1,7 +1,7 @@
 <?php
 get_header();
 ?>
-<div class="container container--narrow page-section">
+<div class="container page-section">
   <header class="search-header">
     <h1 class="search-title">
       Resultados

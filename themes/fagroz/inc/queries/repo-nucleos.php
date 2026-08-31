@@ -44,13 +44,10 @@ if (!function_exists('fagroz_get_centers')) {
     $pagination_base = remove_query_arg('paged', $pagination_base);
     $pagination_base = add_query_arg('paged', '%#%', $pagination_base);
 
-    if ($search !== '') {
-      $pagination_base = add_query_arg('nucleos_search', $search, $pagination_base);
-    }
-
     $pagination = paginate_links([
       'base' => $pagination_base,
       'format' => '',
+      'add_args' => $search !== '' ? ['nucleos_search' => $search] : [],
       'total' => $query->max_num_pages,
       'current' => $paged,
       'type' => 'list',

@@ -17,6 +17,10 @@ if (!defined('FAGROZ_YOUTUBE_URL')) {
   define('FAGROZ_YOUTUBE_URL', 'https://www.youtube.com/@FagroUFRGS');
 }
 
+if (!defined('FAGROZ_INSTAGRAM_URL')) {
+  define('FAGROZ_INSTAGRAM_URL', 'https://www.instagram.com/agronomia.ufrgs/');
+}
+
 if (!defined('FAGROZ_DRIVER_URL')) {
   define('FAGROZ_DRIVER_URL', 'https://chasquebox.ufrgs.br/public/743c18');
 }

@@ -13,7 +13,7 @@ $courses_description = $args['courses_description'] ?? '';
     <div class="page-sobre__mission-courses-card">
       <span class="page-sobre__chip"><?php echo esc_html($courses_title); ?></span>
       <h2 class="page-sobre__title"><?php echo wp_kses_post($courses_description); ?></h2>
-      <a class="button button--primary page-sobre__course-link" href="<?php echo site_url('/educacao') ?>">Explorar cursos</a>
+      <a class="button button--primary page-sobre__course-link" href="<?php echo site_url('/educacao') ?>" target="_blank" rel="noopener noreferrer">Explorar cursos</a>
     </div>
   </div>
 </section>

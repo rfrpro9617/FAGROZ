@@ -39,14 +39,17 @@ $pagination = $nucleos_data['pagination'] ?? '';
     </div>
     <?php if (!empty($nucleos)) : ?>
       <div class="page-sobre__nucleos-list">
-        <?php foreach ($nucleos as $nucleo) : ?>
+        <?php foreach ($nucleos as $nucleo) :
+          $nucleo_id = $nucleo['id'] ?? $nucleo['ID'] ?? get_the_ID();
+          $legacyNucleusUrl = get_field('legacy_nucleus_url', $nucleo_id);
+        ?>
           <article class="page-sobre__nucleo-card">
             <div class="page-sobre__nucleo-content">
               <h3 class="page-sobre__nucleo-title">
                 <a href="<?php echo esc_url($nucleo['permalink']); ?>"><?php echo esc_html($nucleo['title']); ?></a>
               </h3>
               <p class="page-sobre__nucleo-excerpt"><?php echo wp_kses_post(wp_trim_words($nucleo['excerpt'], 24)); ?></p>
-              <a class="button button--secondary page-sobre__nucleo-link" href="<?php echo esc_url($nucleo['permalink']); ?>">Ver mais</a>
+              <a class="button button--secondary page-sobre__nucleo-link" href="<?php echo esc_url($legacyNucleusUrl ?: $nucleo['permalink']); ?>" target="_blank" rel="noopener noreferrer">Ver mais</a>
             </div>
           </article>
         <?php endforeach; ?>

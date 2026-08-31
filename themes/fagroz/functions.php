@@ -37,6 +37,7 @@ class Fagroz_Mega_Menu_Walker extends Walker_Nav_Menu
     } elseif ($depth === 1) {
       $output .= "\n</ul>\n";
     }
+    
   }
 
   function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
@@ -52,7 +53,7 @@ class Fagroz_Mega_Menu_Walker extends Walker_Nav_Menu
 
     $atts = array();
     $atts['title']  = ! empty($item->attr_title) ? $item->attr_title : '';
-    $atts['target'] = ! empty($item->target)     ? $item->target     : '';
+    $atts['target'] = '_blank';
     $atts['rel']    = ! empty($item->xfn)        ? $item->xfn        : '';
     $atts['href']   = ! empty($item->url)        ? $item->url        : '';
     $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
@@ -190,6 +191,7 @@ function load_theme_resources()
   wp_enqueue_style('fagroz_styles', get_theme_file_uri('/build/style-index.css'));
   wp_localize_script('load-fagroz-js', 'universityData', array(
     'root_url' => get_site_url(),
+    'posts_per_page' => (int) get_option('posts_per_page', 5),
   ));
 }
 
@@ -244,6 +246,8 @@ add_action('admin_menu', 'fagroz_rename_posts');
 function university_post_types()
 {
   register_post_type('graduation', array(
+    'capability_type' => 'graduation',
+    'map_meta_cap' => true,
     // Mostra no retorno do json da api de posts
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
@@ -259,6 +263,8 @@ function university_post_types()
     ),
   ));
   register_post_type('graduation-highlight', array(
+    'capability_type' => 'graduation-highlight',
+    'map_meta_cap' => true,
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
     'rewrite' => array('slug' => 'graduation-highlights'),
@@ -273,6 +279,8 @@ function university_post_types()
     ),
   ));
   register_post_type('research-group', array(
+    'capability_type' => 'research-group',
+    'map_meta_cap' => true,
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
     'rewrite' => array('slug' => 'research-group'),
@@ -287,6 +295,8 @@ function university_post_types()
     ),
   ));
   register_post_type('postgraduate', array(
+    'capability_type' => 'postgraduate',
+    'map_meta_cap' => true,
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
     'rewrite' => array('slug' => 'postgraduate'),
@@ -301,6 +311,8 @@ function university_post_types()
     ),
   ));
   register_post_type('departments', array(
+    'capability_type' => 'departments',
+    'map_meta_cap' => true,
     // Mostra no retorno do json da api de posts
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
@@ -316,6 +328,8 @@ function university_post_types()
     ),
   ));
   register_post_type('nucleos', array(
+    'capability_type' => 'nucleos',
+    'map_meta_cap' => true,
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
     'taxonomies' => array('post_tag'),
@@ -331,6 +345,8 @@ function university_post_types()
     ),
   ));
   register_post_type('documentos', array(
+    'capability_type' => 'documentos',
+    'map_meta_cap' => true,
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
     'taxonomies' => array('post_tag', 'category'),

@@ -16,7 +16,7 @@ $show_button = $args['show_button'] ?? true;
           <?php echo wp_kses_post($description); ?>
         </p>
         <?php if ($show_button) : ?>
-          <a href="<?php echo esc_url(site_url('/educacao')); ?>" class="great-college-opportunities__link">
+          <a href="<?php echo esc_url(site_url('/educacao')); ?>" class="great-college-opportunities__link" target="_blank" rel="noopener noreferrer">
             <span class="great-college-opportunities__link-icon dashicons dashicons-external"></span>
             <span class="great-college-opportunities__link-text">
               <?php echo esc_html($button_title); ?>

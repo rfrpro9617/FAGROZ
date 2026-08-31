@@ -45,6 +45,9 @@ get_template_part('template-parts/pages/home/sections/news', null, [
 ]);
 ?>
 <?php
+get_template_part('template-parts/pages/home/sections/social-midida-news');
+?>
+<?php
 $callTeachingOpportunities = get_page_by_path('pagina-configuracao-chamada-para-oportunidades-de-ensino');
 $title = get_field('title', $callTeachingOpportunities->ID);
 $description = get_field('description', $callTeachingOpportunities->ID);

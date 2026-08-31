@@ -13,7 +13,7 @@ class Search {
     this.previousValue = "";
     this.currentPage = 1;
     this.totalPages = 1;
-    this.perPage = 5;
+    this.perPage = Number(universityData?.posts_per_page || 6);
     this.events();
   }
 

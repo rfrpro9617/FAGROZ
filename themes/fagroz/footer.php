@@ -45,7 +45,7 @@ $cellphone = $footer['cellphone'] ?? '';
           <ul class="site-footer__social-list">
             <li><a href="<?php echo esc_url(FAGROZ_YOUTUBE_URL); ?>" class="site-footer__social-link site-footer__social-link--youtube" title="YouTube" target="_blank"><span class="dashicons dashicons-youtube"></span></a></li>
             <li><a href="#" class="site-footer__social-link site-footer__social-link--facebook" title="Facebook" target="_blank"><span class="dashicons dashicons-facebook"></span></a></li>
-            <li><a href="#" class="site-footer__social-link site-footer__social-link--instagram" title="Instagram" target="_blank"><span class="dashicons dashicons-instagram"></span></a></li>
+            <li><a href="<?php echo esc_url(FAGROZ_INSTAGRAM_URL); ?>" class="site-footer__social-link site-footer__social-link--instagram" title="Instagram" target="_blank"><span class="dashicons dashicons-instagram"></span></a></li>
           </ul>
         </nav>
       </div>
