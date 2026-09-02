@@ -35,7 +35,7 @@ $servidores = $args['servidores'] ?? '';
 
       <details class="page-administracao__accordion">
         <summary class="page-administracao__accordion-title">
-          <span>Servidores</span>
+          <span>Técnicos Administrativos</span>
           <span class="page-administracao__accordion-icon">+</span>
         </summary>
         <div class="page-administracao__accordion-content">

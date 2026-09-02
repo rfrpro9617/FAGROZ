@@ -37,7 +37,6 @@ class Fagroz_Mega_Menu_Walker extends Walker_Nav_Menu
     } elseif ($depth === 1) {
       $output .= "\n</ul>\n";
     }
-    
   }
 
   function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
@@ -332,7 +331,6 @@ function university_post_types()
     'map_meta_cap' => true,
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-    'taxonomies' => array('post_tag'),
     'rewrite' => array('slug' => 'nucleos'),
     'has_archive' => true,
     'public' => true,
@@ -344,12 +342,12 @@ function university_post_types()
       'singular_name' => 'Núcleo',
     ),
   ));
+  unregister_taxonomy_for_object_type('post_tag', 'nucleos');
   register_post_type('documentos', array(
     'capability_type' => 'documentos',
     'map_meta_cap' => true,
     'show_in_rest' => true,
     'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
-    'taxonomies' => array('post_tag', 'category'),
     'rewrite' => array('slug' => 'documentos'),
     'has_archive' => true,
     'public' => true,

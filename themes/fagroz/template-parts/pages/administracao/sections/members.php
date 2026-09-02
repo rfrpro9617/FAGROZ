@@ -27,7 +27,7 @@ $content = $args['content'] ?? '';
           </li>
           <li id="servidores" class="members__item">
             <a class="members__link" href="<?php echo site_url('/servidores') ?>">
-              <span class="members__link-text">Servidores</span>
+              <span class="members__link-text">Técnicos Administrativos</span>
               <span class="members__link-icon dashicons dashicons-arrow-right-alt" aria-hidden="true"></span>
             </a>
           </li>

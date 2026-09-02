@@ -32,6 +32,7 @@ get_template_part(
   ]
 );
 ?>
+<?php get_template_part('template-parts/pages/administracao/sections/consuni'); ?>
 <?php
 $library_page = get_page_by_path('pagina-configuracao-secao-biblioteca');
 $acfHeroImage = get_field('hero_image', $library_page->ID);

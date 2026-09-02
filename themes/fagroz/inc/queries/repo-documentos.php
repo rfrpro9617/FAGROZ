@@ -5,9 +5,10 @@ if (!function_exists('fagroz_resolve_documento_url')) {
     $document_url = '';
 
     if (function_exists('get_field')) {
-      $field_candidates = ['documento', 'arquivo', 'document_file'];
+      $file_field_candidates = ['arquivo'];
+      $url_field_candidates = ['url'];
 
-      foreach ($field_candidates as $field_name) {
+      foreach ($file_field_candidates as $field_name) {
         $field_value = get_field($field_name, $post_id);
 
         if (!empty($field_value)) {
@@ -15,6 +16,22 @@ if (!function_exists('fagroz_resolve_documento_url')) {
             $document_url = $field_value['url'];
           } elseif (is_numeric($field_value)) {
             $document_url = wp_get_attachment_url((int) $field_value);
+          } elseif (is_string($field_value)) {
+            $document_url = $field_value;
+          }
+
+          if (!empty($document_url)) {
+            break;
+          }
+        }
+      }
+
+      if (empty($document_url)) {
+        foreach ($url_field_candidates as $field_name) {
+          $field_value = get_field($field_name, $post_id);
+
+          if (is_array($field_value) && !empty($field_value['url'])) {
+            $document_url = $field_value['url'];
           } elseif (is_string($field_value)) {
             $document_url = $field_value;
           }
