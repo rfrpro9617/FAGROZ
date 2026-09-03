@@ -24,36 +24,42 @@ if (!is_array($programs) || empty($programs)) {
     [
       'title' => $deptFitossanidade['title'] ?? '',
       'bg_photo' => $deptFitossanidade['bg_photo'] ?? '',
+      'legacy_departaments_url' => $deptFitossanidade['legacy_departaments_url'] ?? '',
       'link' => $deptFitossanidadeLink,
       'id' => 'fitossanidade',
     ],
     [
       'title' => $deptHorticulturaESilvicultura['title'] ?? '',
       'bg_photo' => $deptHorticulturaESilvicultura['bg_photo'] ?? '',
+      'legacy_departaments_url' => $deptHorticulturaESilvicultura['legacy_departaments_url'] ?? '',
       'link' => $deptHorticulturaESilviculturaLink,
       'id' => 'horticultura-e-silvicultura',
     ],
     [
       'title' => $deptPlantasDeLavoura['title'] ?? '',
       'bg_photo' => $deptPlantasDeLavoura['bg_photo'] ?? '',
+      'legacy_departaments_url' => $deptPlantasDeLavoura['legacy_departaments_url'] ?? '',
       'link' => $deptPlantasDeLavouraLink,
       'id' => 'plantas-de-lavoura',
     ],
     [
       'title' => $deptPlantasForrageirasEAgrometeorologia['title'] ?? '',
       'bg_photo' => $deptPlantasForrageirasEAgrometeorologia['bg_photo'] ?? '',
+      'legacy_departaments_url' => $deptPlantasForrageirasEAgrometeorologia['legacy_departaments_url'] ?? '',
       'link' => $deptPlantasForrageirasEAgrometeorologiaLink,
       'id' => 'plantas-forrageiras-e-agrometeorologia',
     ],
     [
       'title' => $deptSolos['title'] ?? '',
       'bg_photo' => $deptSolos['bg_photo'] ?? '',
+      'legacy_departaments_url' => $deptSolos['legacy_departaments_url'] ?? '',
       'link' => $deptSolosLink,
       'id' => 'solos',
     ],
     [
       'title' => $deptZootecnia['title'] ?? '',
       'bg_photo' => $deptZootecnia['bg_photo'] ?? '',
+      'legacy_departaments_url' => $deptZootecnia['legacy_departaments_url'] ?? '',
       'link' => $deptZootecniaLink,
       'id' => 'zootecnia',
     ],
@@ -70,7 +76,9 @@ if (!is_array($programs) || empty($programs)) {
         if (is_array($card_image)) {
           $card_image = $card_image['url'] ?? '';
         }
-        $card_link = !empty($program['link']) ? $program['link'] : site_url('/pos-graduacao');
+        $card_link = !empty($program['legacy_departaments_url'])
+          ? $program['legacy_departaments_url']
+          : (!empty($program['link']) ? $program['link'] : site_url('/pos-graduacao'));
         ?>
         <article id="<?php echo esc_attr($program['id'] ?? ''); ?>" class="departments-card">
           <div class="departments-card__image">
@@ -78,7 +86,7 @@ if (!is_array($programs) || empty($programs)) {
           </div>
           <div class="departments-card__body">
             <h3 class="departments-card__title"><?php echo esc_html($card_title); ?></h3>
-            <a href="<?php echo esc_url($card_link); ?>" class="btn-departments">
+            <a href="<?php echo esc_url($card_link); ?>" class="btn-departments" target="_blank" rel="noopener noreferrer">
               <span class="dashicons dashicons-external"></span> Mais informações
             </a>
           </div>

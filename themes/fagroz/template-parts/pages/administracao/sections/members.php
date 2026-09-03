@@ -14,19 +14,19 @@ $content = $args['content'] ?? '';
       <nav class="members__navigation" aria-label="Composição da FAGROZ">
         <ul class="members__list">
           <li id="direcao" class="members__item">
-            <a class="members__link" href="<?php echo site_url('/direcao') ?>">
+            <a class="members__link" href="<?php echo site_url('/direcao') ?>" target="_blank">
               <span class="members__link-text">Nossa direção</span>
               <span class="members__link-icon dashicons dashicons-arrow-right-alt" aria-hidden="true"></span>
             </a>
           </li>
           <li id="docentes" class="members__item">
-            <a class="members__link" href="<?php echo site_url('/docentes') ?>">
+            <a class="members__link" href="<?php echo site_url('/docentes') ?>" target="_blank">
               <span class="members__link-text">Docentes</span>
               <span class="members__link-icon dashicons dashicons-arrow-right-alt" aria-hidden="true"></span>
             </a>
           </li>
           <li id="servidores" class="members__item">
-            <a class="members__link" href="<?php echo site_url('/servidores') ?>">
+            <a class="members__link" href="<?php echo site_url('/servidores') ?>" target="_blank">
               <span class="members__link-text">Técnicos Administrativos</span>
               <span class="members__link-icon dashicons dashicons-arrow-right-alt" aria-hidden="true"></span>
             </a>
