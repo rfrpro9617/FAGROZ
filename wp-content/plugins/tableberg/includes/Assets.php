@@ -1,0 +1,73 @@
+<?php
+
+namespace Tableberg;
+
+use Tableberg\Patterns\RegisterPatterns;
+
+class Assets {
+    /**
+     * The frontend view script gates pro features (sorting/search/pagination)
+     * on TABLEBERG_CFG.IS_PRO, so the config must exist on the frontend too.
+     */
+    public function register_frontend_assets() {
+        self::pass_data_to_js('tableberg-table-view-script');
+    }
+
+    public function register_blocks_assets() {
+        self::pass_data_to_js('tableberg-table-editor-script');
+
+        $tableberg_patterns = RegisterPatterns::get_all_registered_tableberg_patterns();
+        $tableberg_pattern_categories = RegisterPatterns::get_all_registered_tableberg_pattern_categories();
+
+        wp_localize_script('tableberg-table-editor-script', 'tablebergPatterns', $tableberg_patterns);
+        wp_localize_script('tableberg-table-editor-script', 'tablebergPatternCategories', $tableberg_pattern_categories);
+
+    }
+
+    public function register_admin_assets() {
+        wp_enqueue_script(
+            'tableberg-admin-script',
+            TABLEBERG_URL . 'includes/Admin/assets/tableberg-admin.build.js',
+            [
+                'lodash',
+                'react',
+                'wp-block-editor',
+                'wp-blocks',
+                'wp-components',
+                'wp-data',
+                'wp-element',
+                'wp-i18n',
+                'wp-primitives',
+            ],
+            TABLEBERG_VERSION,
+            true
+        );
+
+        self::pass_data_to_js('tableberg-admin-script');
+
+        $frontend_script_data = apply_filters('tableberg/filter/admin_settings_menu_data', []);
+        wp_localize_script('tableberg-admin-script', 'tablebergAdminMenuData', $frontend_script_data);
+        wp_enqueue_style(
+            'tableberg-admin-style',
+            TABLEBERG_URL . 'includes/Admin/assets/tableberg-admin-style.css',
+            [],
+            TABLEBERG_VERSION,
+            'all'
+        );
+    }
+
+
+    private static function pass_data_to_js(string $handle) {
+        $data = [
+            'plugin_url' => TABLEBERG_URL,
+            // Pro marks this true only after its licence check succeeds and
+            // its runtime extensions actually boot. The version constant only
+            // proves that the add-on PHP file was loaded.
+            'IS_PRO' => (bool) apply_filters(
+                'tableberg/is_pro_runtime_active',
+                false
+            ),
+        ];
+        wp_localize_script($handle, 'TABLEBERG_CFG', $data);
+    }
+}

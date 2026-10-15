@@ -1,0 +1,64 @@
+@use "../abstracts" as *;
+
+.alunos-em-curso__filters-area {
+  width: 100%;
+  max-width: 760px;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.alunos-em-curso__filter-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.alunos-em-curso__filter {
+  min-width: 0;
+
+  label {
+    display: block;
+    color: $brown-dark-100;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  span {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: rgba($brown-dark-100, 0.72);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  input {
+    width: 100%;
+    height: 48px;
+    padding: 0 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: $white;
+    color: $brown-dark-100;
+    font-size: 0.95rem;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: rgba($brown-dark-100, 0.26);
+      box-shadow: 0 0 0 4px rgba($brown-dark-100, 0.06);
+      outline: none;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .alunos-em-curso__filter-row {
+    grid-template-columns: 1fr;
+  }
+
+  .alunos-em-curso__filter input {
+    height: 44px;
+    border-radius: 12px;
+  }
+}

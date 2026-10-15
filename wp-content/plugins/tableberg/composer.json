@@ -1,0 +1,28 @@
+{
+    "name": "dotcamp/tableberg",
+    "description": "Tableberg plugin by Dotcamp.",
+    "require": {
+        "freemius/wordpress-sdk": "^2.8"
+    },
+    "require-dev": {
+        "php-stubs/wordpress-stubs": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tableberg\\": [
+                "./",
+                "includes/"
+            ],
+            "Tableberg\\Renderer\\": "renderer/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "post-install-cmd": "@php ../../scripts/flatten-freemius-sdk.php vendor",
+        "post-update-cmd": "@php ../../scripts/flatten-freemius-sdk.php vendor"
+    }
+}

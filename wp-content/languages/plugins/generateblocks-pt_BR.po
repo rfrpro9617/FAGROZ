@@ -1,0 +1,74 @@
+# Translation of Plugins - GenerateBlocks - Stable (latest release) in Portuguese (Brazil)
+# This file is distributed under the same license as the Plugins - GenerateBlocks - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2022-10-04 17:11:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/4.1.0\n"
+"Language: pt_BR\n"
+"Project-Id-Version: Plugins - GenerateBlocks - Stable (latest release)\n"
+
+#: includes/class-rest.php:183 includes/class-rest.php:222
+msgid "Settings saved."
+msgstr "Configurações salvas."
+
+#: includes/class-render-blocks.php:122 dist/blocks.js:15
+msgid "Button"
+msgstr "Botão"
+
+#: includes/dynamic-tags/class-dynamic-tags.php:234 dist/blocks.js:3
+#: dist/blocks.js:4 dist/blocks.js:6 dist/blocks/element/index.js:4
+#: dist/blocks/text/index.js:1 dist/pattern-library.js:2
+#: dist/styles-builder.js:41 dist/styles-builder.js:44
+msgid "Default"
+msgstr "Padrão"
+
+#: includes/class-settings.php:52 includes/class-settings.php:53
+#: includes/dashboard.php:187 dist/block-styles.js:1 dist/settings.js:1
+msgid "Settings"
+msgstr "Configurações "
+
+#. Author URI of the plugin
+#: plugin.php
+msgid "https://tomusborne.com"
+msgstr "https://tomusborne.com"
+
+#. Author of the plugin
+#: plugin.php
+msgid "Tom Usborne"
+msgstr "Tom Usborne"
+
+#. Description of the plugin
+#: plugin.php
+msgid "A small collection of lightweight WordPress blocks that can accomplish nearly anything."
+msgstr "Uma pequena coleção de blocos leves do WordPress que podem realizar quase qualquer coisa."
+
+#. Plugin URI of the plugin
+#: plugin.php
+msgid "https://generateblocks.com"
+msgstr "https://generateblocks.com"
+
+#. Plugin Name of the plugin
+#: plugin.php includes/dashboard.php:20 includes/dashboard.php:21
+#: includes/general.php:326 dist/dashboard.js:1 dist/editor-sidebar.js:1
+msgid "GenerateBlocks"
+msgstr "GenerateBlocks"
+
+#: includes/class-render-blocks.php:106 dist/blocks.js:15
+msgid "Buttons"
+msgstr "Botões"
+
+#: includes/class-render-blocks.php:114 dist/blocks.js:6 dist/blocks.js:33
+msgid "Headline"
+msgstr "Título"
+
+#: includes/class-render-blocks.php:80 dist/blocks.js:1 dist/blocks.js:4
+msgid "Grid"
+msgstr "Grade"
+
+#: includes/class-render-blocks.php:60 dist/blocks.js:4 dist/blocks.js:15
+msgid "Container"
+msgstr "Contêiner"

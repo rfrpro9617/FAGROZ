@@ -1,0 +1,24 @@
+@use "../abstracts" as *;
+
+.dados-joolma-shortcode a,
+.content-individual a {
+  color: $brown-dark-100;
+  text-decoration: underline;
+}
+
+.dados-joolma-shortcode a:hover,
+.content-individual a:hover {
+  color: $brown-dark-100;
+  font-weight: bold;
+}
+
+.dados-joolma-shortcode,
+.content-individual {
+
+  // Correção do conteúdo de listas migradas do Joomla/Word/Office
+  p[class*="MsoListParagraph"] {
+    text-indent: 0 !important;
+    padding-left: 1.5rem;
+  }
+
+}

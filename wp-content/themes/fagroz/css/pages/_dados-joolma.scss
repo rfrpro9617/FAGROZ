@@ -1,0 +1,13 @@
+@use "../abstracts" as *;
+
+.dados-joolma__actions a,
+.dados-joolma__item a {
+  color: $brown-dark-100;
+  text-decoration: underline;
+}
+
+.dados-joolma__actions a:hover,
+.dados-joolma__item a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}

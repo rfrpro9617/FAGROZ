@@ -1,0 +1,12 @@
+@use "../abstracts" as *;
+
+.dados-joolma-shortcode a,
+.content-individual a {
+  color: #482200;
+  text-decoration: underline;
+}
+
+.dados-joolma-shortcode a:hover,
+.content-individual a:hover {
+  font-weight: bold;
+}

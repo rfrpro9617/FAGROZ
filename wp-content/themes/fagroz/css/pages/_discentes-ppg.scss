@@ -1,0 +1,27 @@
+.discentes-ppg {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  &__item {
+    border-bottom: 1px solid #e7e0d8;
+  }
+
+  &__name {
+    margin: 0 0 .35rem;
+    color: #482200;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  &__field {
+    color: #222;
+    line-height: 1.5;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}

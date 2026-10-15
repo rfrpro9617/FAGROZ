@@ -1,0 +1,27 @@
+.highlights-single {
+  display: block;
+}
+
+.highlights-single__content .wp-post-image,
+.highlights-single__featured-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  object-fit: cover;
+}
+
+.highlights-single__featured-image {
+  margin: 1.5rem 0;
+}
+
+.single-article--highlight .single-article__main {
+  flex: 1 1 0;
+}
+
+@media (max-width: 768px) {
+  .highlights-single__featured-image {
+    margin: 1rem 0;
+  }
+}

@@ -1,0 +1,581 @@
+# Translation of Plugins - Widgets for Social Photo Feed - Stable (latest release) in Portuguese (Brazil)
+# This file is distributed under the same license as the Plugins - Widgets for Social Photo Feed - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-01-09 21:06:58+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: pt_BR\n"
+"Project-Id-Version: Plugins - Widgets for Social Photo Feed - Stable (latest release)\n"
+
+#: tabs/my-posts.php:133
+msgid "Hide post"
+msgstr "Ocultar post"
+
+#: tabs/my-posts.php:131
+msgid "Show post"
+msgstr "Exibir post"
+
+#: tabs/my-posts.php:107
+msgid "Redirect to the post"
+msgstr "Redirecionar ao post"
+
+#: tabs/my-posts.php:87
+msgid "Text"
+msgstr "Text"
+
+#: tabs/my-posts.php:86
+msgid "Date"
+msgstr "Data"
+
+#: tabs/my-posts.php:85
+msgid "Media"
+msgstr "Mídia"
+
+#: tabs/my-posts.php:79
+msgid "You had no posts!"
+msgstr "Você não tinha posts!"
+
+#: tabs/my-posts.php:69
+msgid "UPGRADE to PRO Features"
+msgstr "ATUALIZE para recursos PRO"
+
+#: tabs/my-posts.php:34 trustindex-feed-plugin.class.php:57
+msgid "My Posts"
+msgstr "Meus posts"
+
+#: tabs/my-posts.php:73
+msgid "Get unlimited posts, multiple feed widgets with custom style settings, widget popups, and access to 9 social platforms – everything you need to showcase your content like a pro!"
+msgstr "Obtenha posts ilimitados, vários widgets de feed com configurações de estilo personalizadas, pop-ups de widget e acesso a 9 plataformas sociais - tudo o que você precisa para exibir seu conteúdo como um profissional!"
+
+#: tabs/feed-configurator.php:216
+msgid "The source you attempted to connect does not contain any posts. Please connect a different source."
+msgstr "A fonte que você tentou conectar não contém nenhum post. Conecte uma fonte diferente."
+
+#: trustindex-feed-plugin.class.php:5199
+msgid "Click here to reconnect"
+msgstr "Clique aqui para se reconectar"
+
+#. translators: %s: Platform name
+#: trustindex-feed-plugin.class.php:5198
+msgid "We can no longer update the posts in your %s feed widget."
+msgstr "Não podemos mais atualizar os posts em seu widget de feed %s."
+
+#: trustindex-feed-plugin.class.php:5077
+msgid "Get more Features"
+msgstr "Obter mais recursos"
+
+#: trustindex-feed-plugin.class.php:5067
+msgid "Widget Settings"
+msgstr "Configurações de Widgets"
+
+#: trustindex-feed-plugin.class.php:5065
+msgid "Create Widget"
+msgstr "Criar Widget"
+
+#: social-photo-feed-widget.php:182
+msgid "Trustindex"
+msgstr "Trustindex"
+
+#: include/trustindex-elementor-widgets.php:11
+msgid "Instagram Feed"
+msgstr "Feed do Instragram"
+
+#: include/rate-us-feedback-box.php:6
+msgid "Support our work by leaving a review!"
+msgstr "Apoie nosso trabalho deixando uma avaliação!"
+
+#: include/rate-us-feedback-box.php:5
+msgid "Do you like our free plugin?"
+msgstr "Você gostou do nosso plug-in gratuito?"
+
+#: social-photo-feed-widget.php:165
+msgid "Remind me later"
+msgstr "Lembrar-me mais tarde"
+
+#: trustindex-feed-plugin.class.php:5167 trustindex-feed-plugin.class.php:5186
+#: trustindex-feed-plugin.class.php:5196
+msgid "Important: "
+msgstr "Importante: "
+
+#: tabs/feed-configurator.php:207 trustindex-feed-plugin.class.php:5159
+#: trustindex-feed-plugin.class.php:5178
+msgid "Go to Connect Page"
+msgstr "Ir para a página de conexão"
+
+#. translators: %s: Platform name
+#: tabs/feed-configurator.php:204 trustindex-feed-plugin.class.php:5173
+#: trustindex-feed-plugin.class.php:5192
+msgid "This will ensure that your %s Feed Widget continues to update automatically."
+msgstr "Isso garantirá que seu %s Feed Widget continue a ser atualizado automaticamente."
+
+#: tabs/feed-configurator.php:201 trustindex-feed-plugin.class.php:5171
+#: trustindex-feed-plugin.class.php:5190
+msgid "Please renew your token by clicking the \"Reconnect\" button on the Connect Page."
+msgstr "Renove seu token clicando no botão \"Reconnect\" na página de conexão."
+
+#. translators: 1: Platform name, 2: Date string
+#: tabs/feed-configurator.php:198 trustindex-feed-plugin.class.php:5188
+msgid "Your %1$s Access Token expired on %2$s."
+msgstr "Seu token de acesso %1$s expirou em %2$s."
+
+#. translators: 1: Platform name, 2: Date string
+#: tabs/feed-configurator.php:195 trustindex-feed-plugin.class.php:5169
+msgid "Your %1$s Access Token expires on %2$s."
+msgstr "Seu token de acesso %1$s expira em %2$s."
+
+#. translators: %s: Trustindex CEO
+#: trustindex-feed-plugin.class.php:5154
+msgid "Thank you. Gabor, %s"
+msgstr "Obrigado. Gabor, %s"
+
+#: trustindex-feed-plugin.class.php:5152
+msgid "If you love our features, please write a review to help us make the plugin even better."
+msgstr "Se você gostou dos nossos recursos, escreva uma avaliação para nos ajudar a tornar o plug-in ainda melhor."
+
+#. translators: %s: Name of the plugin
+#: trustindex-feed-plugin.class.php:5151
+msgid "We have worked a lot on the free \"%s\" plugin."
+msgstr "Trabalhamos muito no plug-in \"%s\" gratuito."
+
+#: social-photo-feed-widget.php:154
+msgid "Do not remind me again"
+msgstr "Não me lembre novamente"
+
+#: social-photo-feed-widget.php:151
+msgid "Maybe later"
+msgstr "Talvez mais tarde"
+
+#: social-photo-feed-widget.php:148
+msgid "Write a review"
+msgstr "Escreva uma avaliação"
+
+#: include/rate-us-feedback-box.php:28
+msgid "Contact our support"
+msgstr "Entre em contato com nosso suporte"
+
+#: include/rate-us-feedback-box.php:27
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: include/rate-us-feedback-box.php:24
+msgid "Describe your experience"
+msgstr "Descreva sua experiência"
+
+#: include/rate-us-feedback-box.php:23
+msgid "Contact e-mail"
+msgstr "Email de contato"
+
+#: include/rate-us-feedback-box.php:22
+msgid "Thanks for your feedback!<br />Let us know how we can improve."
+msgstr "Agradecemos o seu feedback!<br />Informe-nos como podemos melhorar."
+
+#: tabs/advanced.php:60
+msgid "Check"
+msgstr "Verificar"
+
+#. Plugin Name of the plugin
+#: social-photo-feed-widget.php
+msgid "Widgets for Social Photo Feed"
+msgstr "Widgets for Social Photo Feed"
+
+#: trustindex-feed-plugin.class.php:5132
+msgid "This message is not be visible to visitors in public mode."
+msgstr "Essa mensagem não fica visível para os visitantes no modo público."
+
+#: trustindex-feed-plugin.class.php:5078
+msgid "Rate our plugin"
+msgstr "Avalie nosso plugin"
+
+#. translators: %s: URL of Advanced page
+#: trustindex-feed-plugin.class.php:5010
+msgid "enable 'CSS internal loading' in the %s page!"
+msgstr "ative o \"carregamento interno de CSS\" na página %s!"
+
+#: trustindex-feed-plugin.class.php:5008
+msgid "or"
+msgstr "ou"
+
+#: trustindex-feed-plugin.class.php:5005
+msgid "Grant write permissions to upload folder"
+msgstr "Conceder permissões de gravação à pasta de upload"
+
+#: trustindex-feed-plugin.class.php:5002
+msgid "CSS file exists and it is not writeable. Delete the file"
+msgstr "O arquivo CSS existe e não pode ser gravado. Exclua o arquivo"
+
+#: trustindex-feed-plugin.class.php:4992
+msgid "Your widgets do not display properly!"
+msgstr "Seus widgets não são exibidos corretamente!"
+
+#: trustindex-feed-plugin.class.php:4991
+msgid "ERROR with the following plugin:"
+msgstr "ERRO com o seguinte plug-in:"
+
+#: trustindex-feed-plugin.class.php:4833 trustindex-feed-plugin.class.php:4992
+msgid "CSS file could not saved."
+msgstr "Não foi possível salvar o arquivo CSS."
+
+#: trustindex-feed-plugin.class.php:296 trustindex-feed-plugin.class.php:379
+msgid "Could not download the posts for the widget.<br />Please reload the page.<br />If the problem persists, please write an email to support@trustindex.io."
+msgstr "Não foi possível fazer o download dos posts para o widget.<br />Recarregue a página.<br />Se o problema persistir, escreva um e-mail para support@trustindex.io."
+
+#: trustindex-feed-plugin.class.php:226
+msgid "You have to connect your source!"
+msgstr "Você precisa conectar sua fonte!"
+
+#: trustindex-feed-plugin.class.php:63
+msgid "Get more features"
+msgstr "Obtenha mais recursos"
+
+#: trustindex-feed-plugin.class.php:51
+msgid "Feed Configurator"
+msgstr "Configurador de feed"
+
+#: tabs/feed-configurator.php:329
+msgid "Copy and paste this shortcode into post, page or widget."
+msgstr "Copie e cole esse shortcode em um post, página ou widget."
+
+#: tabs/feed-configurator.php:317
+msgid "Insert this shortcode into your website"
+msgstr "Insira este shortcode no seu site"
+
+#: tabs/feed-configurator.php:274
+msgid "Template"
+msgstr "Modelo"
+
+#: tabs/feed-configurator.php:254 tabs/feed-configurator.php:277
+msgid "Select"
+msgstr "Selecionar"
+
+#: tabs/feed-configurator.php:214
+msgid "Select the type of posts you'd like to display in your feed"
+msgstr "Selecione o tipo de posts que deseja exibir em seu feed"
+
+#: tabs/feed-configurator.php:185
+msgid "Disconnect"
+msgstr "Desconectar"
+
+#: tabs/feed-configurator.php:155
+msgid "Save and get code"
+msgstr "Salvar e obter o código"
+
+#: tabs/feed-configurator.php:131
+msgid "Get Shortcode"
+msgstr "Obter shortcode"
+
+#: tabs/feed-configurator.php:130
+msgid "Widget Editor"
+msgstr "Editor de Widget"
+
+#: tabs/feed-configurator.php:129
+msgid "Select Template"
+msgstr "Selecionar modelo"
+
+#: tabs/feed-configurator.php:128
+msgid "Select Layout"
+msgstr "Selecionar layout"
+
+#. translators: %s: Platform name
+#: tabs/feed-configurator.php:127 trustindex-feed-plugin.class.php:5063
+msgid "Connect %s"
+msgstr "Conecte com %s"
+
+#: tabs/advanced.php:174
+msgid "If you notice an incorrect translation in the plugin text, please report it here:"
+msgstr "Se você notar uma tradução incorreta no texto do plug-in, informe-a aqui:"
+
+#: tabs/advanced.php:172
+msgid "Translation"
+msgstr "Tradução"
+
+#: tabs/advanced.php:165
+msgid "Re-create the database tables of the plugin.<br />Please note: this removes all settings and reviews."
+msgstr "Recrie as tabelas do banco de dados do plug-in.<br />Observe: isso remove todas as configurações e revisões."
+
+#: tabs/advanced.php:164 tabs/advanced.php:167
+msgid "Re-create plugin"
+msgstr "Recriar o plug-in"
+
+#: tabs/advanced.php:158 tabs/feed-configurator.php:325
+msgid "Copied"
+msgstr "Copiado"
+
+#: tabs/advanced.php:155 tabs/feed-configurator.php:322
+msgid "Copy to clipboard"
+msgstr "Copiar para a área de transferência"
+
+#: tabs/advanced.php:149
+msgid "And include the information below:"
+msgstr "E incluir as informações abaixo:"
+
+#. translators: %s: pastebin URL
+#: tabs/advanced.php:147
+msgid "If you have an (webserver) error log, you can copy it to the issue, or link it with %s"
+msgstr "Se você tiver um registro de erros (do servidor da Web), poderá copiá-lo para o problema ou vinculá-lo com %s"
+
+#. translators: %s: URL of a screencast service provider
+#: tabs/advanced.php:143
+msgid "You can share a screencast video with %s"
+msgstr "Você pode compartilhar um screencast de vídeo com %s"
+
+#. translators: %s: URL of a screenshot service provider
+#: tabs/advanced.php:139
+msgid "You can share a screenshot with %s"
+msgstr "Você pode compartilhar uma captura de tela com %s"
+
+#: tabs/advanced.php:136
+msgid "Describe your problem"
+msgstr "Descreva seu problema"
+
+#: tabs/advanced.php:134
+msgid "Please help us with some information:"
+msgstr "Ajude-nos com algumas informações:"
+
+#. translators: %s: URL of the plugin's support
+#: tabs/advanced.php:131
+msgid "If the problem/question still exists, please create an issue here: %s"
+msgstr "Se o problema/pergunta ainda existir, reporte aqui: %s"
+
+#: tabs/advanced.php:117
+msgid "Save"
+msgstr "Salvar"
+
+#: tabs/advanced.php:116
+msgid "In a new line, add"
+msgstr "Numa nova linha, adicione"
+
+#: tabs/advanced.php:115
+msgid "Scroll to"
+msgstr "Rolar até"
+
+#: tabs/advanced.php:114
+msgid "Navigate to"
+msgstr "Navegue até"
+
+#: tabs/advanced.php:110
+msgid "exclude Trustindex's JS file:"
+msgstr "excluir o arquivo JS do Trustindex:"
+
+#: tabs/advanced.php:109
+msgid "clear the cache"
+msgstr "limpar o cache"
+
+#: tabs/advanced.php:107
+msgid "If you are using cacher plugin, you should:"
+msgstr "Se estiver usando um plug-in de cache, você deverá:"
+
+#: tabs/advanced.php:99
+msgid "Enable CSS internal loading"
+msgstr "Ativar o carregamento interno do CSS"
+
+#. translators: %s: file absolute path
+#: tabs/advanced.php:87
+msgid "Delete the CSS file at <strong>%s</strong>."
+msgstr "Exclua o arquivo CSS em <strong>%s</strong>."
+
+#: tabs/advanced.php:83
+msgid "corrupted"
+msgstr "corrompido"
+
+#: tabs/advanced.php:75
+msgid "CSS content:"
+msgstr "Conteúdo CSS:"
+
+#: tabs/advanced.php:72
+msgid "writing permission"
+msgstr "permissão de escrita"
+
+#: tabs/advanced.php:62
+msgid "You should enable it, to get new features and fixes automatically, right after they published!"
+msgstr "Você deve ativá-la para obter novos recursos e correções automaticamente, logo após serem publicados!"
+
+#: tabs/advanced.php:59
+msgid "Use automatic plugin update:"
+msgstr "Use a atualização automática de plug-ins:"
+
+#: tabs/advanced.php:55
+msgid "Update"
+msgstr "Atualizar"
+
+#: tabs/advanced.php:53
+msgid "Use the latest version:"
+msgstr "Use a versão mais recente:"
+
+#: tabs/advanced.php:50
+msgid "Trustindex plugin"
+msgstr "Plug-in Trustindex"
+
+#: tabs/advanced.php:47
+msgid "If you have any problem, you should try these steps:"
+msgstr "Se você tiver algum problema, tente estas etapas:"
+
+#: tabs/advanced.php:46
+msgid "Troubleshooting"
+msgstr "Solução de problemas"
+
+#. translators: %s: URL of Advanced page
+#: tabs/advanced.php:44 trustindex-feed-plugin.class.php:68
+#: trustindex-feed-plugin.class.php:5010
+msgid "Advanced"
+msgstr "Avançado"
+
+#: include/step-list.php:30
+msgid "Back"
+msgstr "Voltar"
+
+#: include/get-more-customers-box.php:63
+msgid "Now we offer you a 30%% discount off your subscription! Create your free account and benefit from the onboarding discount now!"
+msgstr "Agora oferecemos a você um desconto de 30%% em sua assinatura! Crie sua conta gratuita e aproveite o desconto de integração agora mesmo!"
+
+#: include/get-more-customers-box.php:57
+msgid "Adjust every element of the feed widget to your brand: style, color, size, fonts and more."
+msgstr "Ajuste cada elemento do widget de feed à sua marca: estilo, cor, tamanho, fontes e muito mais."
+
+#: include/get-more-customers-box.php:56
+msgid "Wide customization"
+msgstr "Ampla personalização"
+
+#: include/get-more-customers-box.php:53
+msgid "Don't want to display a header, caption, comments and likes? No problem, you can easily hide multiple widget elements!"
+msgstr "Não quer exibir um cabeçalho, legenda, comentários e curtidas? Não tem problema, você pode ocultar facilmente vários elementos do widget!"
+
+#: include/get-more-customers-box.php:52
+msgid "Hide any widget element"
+msgstr "Ocultar qualquer elemento do widget"
+
+#: include/get-more-customers-box.php:49
+msgid "No need to have programming or designing skills to create eye-catching feed widgets."
+msgstr "Não é necessário ter habilidades de programação ou design para criar widgets de feed atraentes."
+
+#: include/get-more-customers-box.php:48
+msgid "Easy setup"
+msgstr "Configuração fácil"
+
+#: include/get-more-customers-box.php:45
+msgid "With a Follow button in your widget header, you'll attract more and more followers, right on your website."
+msgstr "Com um botão 'Seguir' no cabeçalho do widget, você atrairá mais e mais seguidores, diretamente do seu site."
+
+#: include/get-more-customers-box.php:44
+msgid "Get more followers"
+msgstr "Obter mais seguidores"
+
+#: include/get-more-customers-box.php:41
+msgid "Your premium widgets will update every day with fresh content, so Google crawls your site more frequently - improving your SEO and search ranking in the long run."
+msgstr "Seus widgets premium serão atualizados todos os dias com conteúdo novo, para que o Google rastreie seu site com mais frequência, melhorando seu SEO e sua classificação de pesquisa a longo prazo."
+
+#: include/get-more-customers-box.php:40
+msgid "Higher SEO"
+msgstr "SEO superior"
+
+#: include/get-more-customers-box.php:37
+msgid "You can mix your posts from different platforms and display them in 1 feed widget."
+msgstr "Você pode misturar seus posts de diferentes plataformas e exibi-las em um único widget de feed."
+
+#: include/get-more-customers-box.php:36
+msgid "Mix social feeds"
+msgstr "Combine feeds sociais"
+
+#. translators: %s: platform names comma separated
+#: include/get-more-customers-box.php:31
+msgid "Add more posts to your widget from %s, etc. to enjoy more social content and to keep customers on your site for longer."
+msgstr "Adicione mais posts ao seu widget a partir de %s, etc. para aproveitar mais conteúdo social e manter os clientes no seu site por mais tempo."
+
+#. translators: %d: number of available feed platforms
+#: include/get-more-customers-box.php:27
+msgid "%d social feed platforms"
+msgstr "%d plataformas de feed social"
+
+#: include/get-more-customers-box.php:22
+msgid "Build trust by using widgets that suit your website best."
+msgstr "Crie confiança usando widgets que se adaptem melhor ao seu site."
+
+#: include/get-more-customers-box.php:21
+msgid "Create unlimited number of feed widgets"
+msgstr "Crie um número ilimitado de widgets de feed"
+
+#: include/get-more-customers-box.php:14
+msgid "Display unlimited number of posts"
+msgstr "Exibir um número ilimitado de posts"
+
+#: include/get-more-customers-box.php:11
+msgid "Get more features with a professional package:"
+msgstr "Obtenha mais recursos com um pacote profissional:"
+
+#: include/get-more-customers-box.php:10 include/get-more-customers-box.php:60
+#: tabs/my-posts.php:75
+msgid "Create a Free Account for More Features"
+msgstr "Crie uma conta gratuita para obter mais recursos"
+
+#. translators: %s: Platform name
+#: include/get-more-customers-box.php:8
+msgid "Increase SEO, trust and sales using %s feeds."
+msgstr "Aumente o SEO, a confiança e as vendas usando os feeds %s."
+
+#: include/get-more-customers-box.php:4
+msgid "Want to get more customers and followers?"
+msgstr "Deseja obter mais clientes e seguidores?"
+
+#: include/admin.php:235
+msgid "Test again"
+msgstr "Teste novamente"
+
+#: include/admin.php:233
+msgid "Therefore, our plugin might not work properly. Please, contact your hosting support, they can resolve this easily."
+msgstr "Portanto, nosso plug-in pode não funcionar corretamente. Entre em contato com o suporte da sua hospedagem, pois eles podem resolver isso facilmente."
+
+#: include/admin.php:231
+msgid "It seems you are using a proxy for HTTP requests but after a test request it returned a following error:"
+msgstr "Parece que você está usando um proxy para solicitações HTTP, mas após uma solicitação de teste, ele retornou o seguinte erro:"
+
+#: include/admin.php:224
+msgid "b) or you should add Trustindex as an <strong>WP_ACCESSIBLE_HOSTS</strong>: \"*.trustindex.io\""
+msgstr "b) ou você deve adicionar o Trustindex como um <strong>WP_ACCESSIBLE_HOSTS</strong>: \"*.trustindex.io\""
+
+#: include/admin.php:223
+msgid "a) You should define <strong>WP_HTTP_BLOCK_EXTERNAL</strong> as false"
+msgstr "a) Você deve definir <strong>WP_HTTP_BLOCK_EXTERNAL</strong> como false"
+
+#: include/admin.php:222
+msgid "Solution"
+msgstr "Solução"
+
+#: include/admin.php:221
+msgid "Your site cannot download our widget templates, because of your server settings not allowing that:"
+msgstr "Seu site não pode baixar nossos modelos de widget porque as configurações do servidor não permitem isso:"
+
+#: include/admin.php:210
+msgid "new"
+msgstr "novo"
+
+#: include/admin.php:113
+msgid "For some reason, the <strong>CSS</strong> file required to run the plugin was not loaded.<br />One of your plugins is probably causing the problem."
+msgstr "Por algum motivo, o arquivo <strong>CSS</strong> necessário para executar o plug-in não foi carregado.<br />Um dos seus plug-ins provavelmente está causando o problema."
+
+#. Author URI of the plugin
+#: social-photo-feed-widget.php
+msgid "https://www.trustindex.io/"
+msgstr "https://www.trustindex.io/"
+
+#. Author of the plugin
+#: social-photo-feed-widget.php
+msgid "Trustindex.io <support@trustindex.io>"
+msgstr "Trustindex.io <support@trustindex.io>"
+
+#. Description of the plugin
+#: social-photo-feed-widget.php
+msgid "Instagram Feed Widgets. Display your Instagram feed on your website to increase engagement, sales and SEO."
+msgstr "Widgets de feed do Instagram. Exiba seu feed do Instagram em seu site para aumentar o engajamento, as vendas e o SEO."
+
+#. Plugin URI of the plugin
+#: social-photo-feed-widget.php
+msgid "https://wordpress.org/plugins/social-photo-feed-widget/"
+msgstr "https://br.wordpress.org/plugins/social-photo-feed-widget/"
+
+#. translators: %s: Platform name
+#: include/get-more-customers-box.php:17
+msgid "You can test Trustindex with 10 posts in the free version. Upgrade to a subscription to display ALL your %s posts."
+msgstr "Você pode testar o Trustindex com 10 posts na versão gratuita. Faça upgrade para uma assinatura para exibir TODOS os seus %s posts."

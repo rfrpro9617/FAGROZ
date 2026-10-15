@@ -1,0 +1,772 @@
+<?php
+
+namespace Tableberg\Renderer\Table;
+
+use Tableberg\Renderer\Attrs\NumberAttr;
+use Tableberg\Renderer\Attrs\BoolAttr;
+use Tableberg\Renderer\Attrs\StringAttr;
+use Tableberg\Renderer\Attrs\Sides;
+use Tableberg\Renderer\Attrs\Corners;
+
+use function Tableberg\Renderer\getOrNull;
+
+class TableAttrs {
+    /** @var NumberAttr */
+    public $version;
+
+    /** @var BoolAttr */
+    public $isExample;
+
+    /** @var TableConfig */
+    public $table;
+
+    /** @var array<int, RowConfig> */
+    public $rows;
+
+    /** @var array<int, ColumnConfig> */
+    public $columns;
+
+    /** @var array<string, CellData> */
+    public $cells;
+
+    /** @var array<string, array<string, mixed>> */
+    public $bindings;
+
+    /** @var CellDefaults */
+    public $cellDefaults;
+
+    /**
+     * Every attribute the table block carried, untouched. Pro registers
+     * table-level attributes of its own, so its renderer reads them from
+     * here rather than free having to know their names — mirrors
+     * CellData->attrs.
+     *
+     * @var array<string, mixed>
+     */
+    public $attrs;
+
+    /**
+     * @param array $data
+     * @return self
+     */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $defaults = Defaults::get_defaults();
+
+        $instance = new self();
+        $instance->attrs = $data;
+        $instance->version = new NumberAttr(
+            getOrNull($data['version']),
+            $defaults['version']
+        );
+        $instance->isExample = new BoolAttr(getOrNull($data['isExample']), $defaults['isExample']);
+        $instance->table = TableConfig::from_array(getOrNull($data['table']));
+        $instance->rows = self::parse_row_configs(getOrNull($data['rows']));
+        $instance->columns = self::parse_columns(getOrNull($data['columns']));
+        $instance->cells = self::parse_cells(getOrNull($data['cells']));
+        $instance->bindings = self::parse_bindings(getOrNull($data['bindings']));
+        $instance->cellDefaults = CellDefaults::from_array(getOrNull($data['cellDefaults']));
+
+        return $instance;
+    }
+
+    /** @return array<string, mixed> */
+    public static function get_table_defaults() {
+        $defaults = Defaults::get_defaults();
+
+        if (isset($defaults['table']) && is_array($defaults['table'])) {
+            return $defaults['table'];
+        }
+
+        if (isset($defaults['tableConfig']) && is_array($defaults['tableConfig'])) {
+            return $defaults['tableConfig'];
+        }
+
+        return [];
+    }
+
+    /** @return array<string, mixed> */
+    public static function get_cell_style_defaults() {
+        $defaults = Defaults::get_defaults();
+
+        if (
+            isset($defaults['cellDefaults']) &&
+            is_array($defaults['cellDefaults']) &&
+            isset($defaults['cellDefaults']['styles']) &&
+            is_array($defaults['cellDefaults']['styles'])
+        ) {
+            return array_merge(
+                ['cells' => []],
+                $defaults['cellDefaults']['styles']
+            );
+        }
+
+        if (isset($defaults['cellStyles']) && is_array($defaults['cellStyles'])) {
+            return array_merge(['cells' => []], $defaults['cellStyles']);
+        }
+
+        return ['cells' => []];
+    }
+
+    /** @return array<int, RowConfig> */
+    private static function parse_row_configs($data) {
+        if (!is_array($data)) {
+            return [];
+        }
+
+        $row_configs = [];
+
+        foreach ($data as $row => $row_config) {
+            $row_configs[(int) $row] = RowConfig::from_array($row_config);
+        }
+
+        return $row_configs;
+    }
+
+    /** @return array<int, ColumnConfig> */
+    private static function parse_columns($data) {
+        if (!is_array($data)) {
+            return [];
+        }
+
+        $columns = [];
+
+        foreach ($data as $column => $column_config) {
+            $columns[(int) $column] = ColumnConfig::from_array($column_config);
+        }
+
+        return $columns;
+    }
+
+    /** @return array<string, CellData> */
+    private static function parse_cells($data) {
+        if (!is_array($data)) {
+            return [];
+        }
+
+        $cells = [];
+
+        foreach ($data as $key => $cell) {
+            if (!is_string($key)) {
+                continue;
+            }
+
+            $cells[$key] = CellData::from_array($cell);
+        }
+
+        return $cells;
+    }
+
+    /** @return array<string, array<string, mixed>> */
+    private static function parse_bindings($data) {
+        if (!is_array($data)) {
+            return [];
+        }
+
+        $bindings = [];
+
+        foreach ($data as $key => $binding) {
+            if (!is_string($key) || !is_array($binding)) {
+                continue;
+            }
+
+            $bindings[$key] = $binding;
+        }
+
+        return $bindings;
+    }
+}
+
+class PaginationConfig {
+    /** @var BoolAttr */
+    public $enabled;
+
+    /** @var NumberAttr */
+    public $pageSize;
+
+    /** @var BoolAttr */
+    public $showPageNumbers;
+
+    /** @var BoolAttr */
+    public $showPrevNext;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $table_defaults = TableAttrs::get_table_defaults();
+        $d = isset($table_defaults['pagination']) && is_array($table_defaults['pagination'])
+            ? $table_defaults['pagination']
+            : [];
+
+        $instance = new self();
+        $instance->enabled = new BoolAttr(getOrNull($data['enabled']), $d['enabled']);
+        $instance->pageSize = new NumberAttr(getOrNull($data['pageSize']), $d['pageSize']);
+        $instance->showPageNumbers = new BoolAttr(getOrNull($data['showPageNumbers']), $d['showPageNumbers']);
+        $instance->showPrevNext = new BoolAttr(getOrNull($data['showPrevNext']), $d['showPrevNext']);
+
+        return $instance;
+    }
+}
+
+class ResponsiveBreakpointConfig {
+    /** @var BoolAttr */
+    public $enabled;
+
+    /** @var NumberAttr */
+    public $maxWidth;
+
+    /** @var StringAttr */
+    public $mode;
+
+    /** @var BoolAttr */
+    public $transpose;
+
+    /** @var NumberAttr */
+    public $stackCount;
+
+    /** @var BoolAttr */
+    public $repeatFirstCol;
+
+    /**
+     * @param array|null $data
+     * @param array<string, mixed> $defaults
+     * @return self
+     */
+    public static function from_array($data, $defaults) {
+        $data = is_array($data) ? $data : [];
+
+        $instance = new self();
+        $instance->enabled = new BoolAttr(getOrNull($data['enabled']), $defaults['enabled']);
+        $instance->maxWidth = new NumberAttr(getOrNull($data['maxWidth']), $defaults['maxWidth']);
+        $instance->mode = new StringAttr(
+            getOrNull($data['mode']),
+            $defaults['mode'],
+            ['', 'scroll', 'stack']
+        );
+        $transposeInput = getOrNull($data['transpose']);
+        $legacyDirectionInput = getOrNull($data['direction']);
+        if ($transposeInput === null && is_string($legacyDirectionInput)) {
+            $transposeInput = $legacyDirectionInput === 'row';
+        }
+
+        $instance->transpose = new BoolAttr(
+            $transposeInput,
+            $defaults['transpose']
+        );
+        $instance->stackCount = new NumberAttr(
+            getOrNull($data['stackCount']),
+            $defaults['stackCount']
+        );
+
+        $repeatFirstColInput = getOrNull($data['repeatFirstCol']);
+        if ($repeatFirstColInput === null) {
+            $repeatFirstColInput = getOrNull($data['headerAsCol']);
+        }
+
+        $instance->repeatFirstCol = new BoolAttr(
+            $repeatFirstColInput,
+            $defaults['repeatFirstCol']
+        );
+
+        return $instance;
+    }
+}
+
+class ResponsiveConfig {
+    /** @var ResponsiveBreakpointConfig */
+    public $tablet;
+
+    /** @var ResponsiveBreakpointConfig */
+    public $mobile;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $table_defaults = TableAttrs::get_table_defaults();
+        $defaults = isset($table_defaults['responsive']) && is_array($table_defaults['responsive'])
+            ? $table_defaults['responsive']
+            : [];
+
+        $instance = new self();
+        $instance->tablet = ResponsiveBreakpointConfig::from_array(
+            getOrNull($data['tablet']),
+            $defaults['tablet']
+        );
+        $instance->mobile = ResponsiveBreakpointConfig::from_array(
+            getOrNull($data['mobile']),
+            $defaults['mobile']
+        );
+
+        return $instance;
+    }
+}
+
+class CellSpacingConfig {
+    /** @var StringAttr */
+    public $horizontal;
+
+    /** @var StringAttr */
+    public $vertical;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $table_defaults = TableAttrs::get_table_defaults();
+        $defaults = isset($table_defaults['cellSpacing']) && is_array($table_defaults['cellSpacing'])
+            ? $table_defaults['cellSpacing']
+            : [];
+
+        $instance = new self();
+        $instance->horizontal = new StringAttr(
+            getOrNull($data['horizontal']),
+            $defaults['horizontal']
+        );
+        $instance->vertical = new StringAttr(
+            getOrNull($data['vertical']),
+            $defaults['vertical']
+        );
+
+        return $instance;
+    }
+}
+
+class CellDefaults {
+    /** @var CellStyles */
+    public $styles;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+
+        $instance = new self();
+        $instance->styles = CellStyles::from_array(getOrNull($data['styles']));
+
+        return $instance;
+    }
+}
+
+class CellData {
+    /** @var Span */
+    public $span;
+
+    /** @var StringAttr */
+    public $className;
+
+    /** @var array<int, CellElement> */
+    public $elements;
+
+    /** @var array<string, mixed>|null */
+    public $styles;
+
+    /** @var array<string, mixed>|null */
+    public $ribbon;
+
+    /**
+     * Every attribute the cell block carried, untouched. Pro registers cell
+     * attributes of its own, so its renderer reads them from here rather
+     * than free having to know their names.
+     *
+     * @var array<string, mixed>
+     */
+    public $attrs;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+
+        $instance = new self();
+        $instance->attrs = $data;
+        $instance->span = Span::from_array(getOrNull($data['span']));
+        $instance->className = new StringAttr(getOrNull($data['className']), '');
+        $instance->elements = [];
+
+        $elements = getOrNull($data['elements']);
+        if (is_array($elements)) {
+            foreach ($elements as $element) {
+                $instance->elements[] = CellElement::from_array($element);
+            }
+        }
+
+        $styles = getOrNull($data['styles']);
+        $instance->styles = is_array($styles) ? $styles : null;
+
+        $ribbon = getOrNull($data['ribbon']);
+        $instance->ribbon = is_array($ribbon) ? $ribbon : null;
+
+        return $instance;
+    }
+}
+
+class TableConfig {
+    /** @var NumberAttr */
+    public $rows;
+
+    /** @var NumberAttr */
+    public $cols;
+
+    /** @var StringAttr */
+    public $className;
+
+    /** @var BoolAttr */
+    public $headerEnabled;
+
+    /** @var BoolAttr */
+    public $footerEnabled;
+
+    /** @var StringAttr */
+    public $caption;
+
+    /** @var StringAttr */
+    public $tableWidth;
+
+    /** @var StringAttr */
+    public $tableAlignment;
+
+    /** @var CellSpacingConfig */
+    public $cellSpacing;
+
+    /** @var Sides */
+    public $tableBorder;
+
+    /** @var TypographyConfig */
+    public $typography;
+
+    /** @var Sides */
+    public $margin;
+
+    /** @var Sides */
+    public $padding;
+
+    /** @var BoolAttr */
+    public $fixedColumnWidths;
+
+    /** @var PaginationConfig */
+    public $pagination;
+
+    /** @var ResponsiveConfig */
+    public $responsive;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $d = TableAttrs::get_table_defaults();
+
+        $instance = new self();
+        $instance->rows = new NumberAttr(getOrNull($data['rows']), $d['rows']);
+        $instance->cols = new NumberAttr(getOrNull($data['cols']), $d['cols']);
+        $instance->className = new StringAttr(getOrNull($data['className']), '');
+        $instance->headerEnabled = new BoolAttr(getOrNull($data['headerEnabled']), $d['headerEnabled']);
+        $instance->footerEnabled = new BoolAttr(getOrNull($data['footerEnabled']), $d['footerEnabled']);
+        $instance->caption = new StringAttr(getOrNull($data['caption']), $d['caption']);
+        $instance->tableWidth = new StringAttr(
+            getOrNull($data['tableWidth']),
+            $d['tableWidth']
+        );
+        $instance->tableAlignment = new StringAttr(
+            getOrNull($data['tableAlignment']),
+            $d['tableAlignment'],
+            ['left', 'center', 'right']
+        );
+        $instance->cellSpacing = CellSpacingConfig::from_array(getOrNull($data['cellSpacing']));
+        $instance->tableBorder = Sides::from_array(
+            getOrNull($data['tableBorder']),
+            $d['tableBorder']
+        );
+        $instance->typography = TypographyConfig::from_array(
+            getOrNull($data['typography'])
+        );
+        $emptySides = ['top' => '', 'right' => '', 'bottom' => '', 'left' => ''];
+        $instance->margin = Sides::from_array(
+            getOrNull($data['margin']),
+            isset($d['margin']) && is_array($d['margin']) ? $d['margin'] : $emptySides
+        );
+        $instance->padding = Sides::from_array(
+            getOrNull($data['padding']),
+            isset($d['padding']) && is_array($d['padding']) ? $d['padding'] : $emptySides
+        );
+        $instance->fixedColumnWidths = new BoolAttr(
+            getOrNull($data['fixedColumnWidths']),
+            $d['fixedColumnWidths']
+        );
+        $instance->pagination = PaginationConfig::from_array(getOrNull($data['pagination']));
+        $instance->responsive = ResponsiveConfig::from_array(getOrNull($data['responsive']));
+
+        return $instance;
+    }
+}
+
+/**
+ * Table-wide typography: the same options the core Table block offers, set on
+ * the table element so the cells inherit them.
+ */
+class TypographyConfig {
+    /** @var StringAttr */
+    public $fontFamily;
+
+    /** @var StringAttr */
+    public $fontSize;
+
+    /** @var StringAttr */
+    public $fontStyle;
+
+    /** @var StringAttr */
+    public $fontWeight;
+
+    /** @var StringAttr */
+    public $lineHeight;
+
+    /** @var StringAttr */
+    public $letterSpacing;
+
+    /** @var StringAttr */
+    public $textDecoration;
+
+    /** @var StringAttr */
+    public $textTransform;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $tableDefaults = TableAttrs::get_table_defaults();
+        $d = isset($tableDefaults['typography']) && is_array($tableDefaults['typography'])
+            ? $tableDefaults['typography']
+            : [];
+
+        $instance = new self();
+        foreach (
+            [
+                'fontFamily',
+                'fontSize',
+                'fontStyle',
+                'fontWeight',
+                'lineHeight',
+                'letterSpacing',
+                'textDecoration',
+                'textTransform',
+            ] as $property
+        ) {
+            $instance->{$property} = new StringAttr(
+                getOrNull($data[$property]),
+                isset($d[$property]) ? $d[$property] : ''
+            );
+        }
+
+        return $instance;
+    }
+
+    /**
+     * The typography as `property: value` declarations, skipping everything
+     * the user has not set so the theme keeps deciding.
+     *
+     * @return array<int, string>
+     */
+    public function asStyles() {
+        $properties = [
+            'font-family' => $this->fontFamily,
+            'font-size' => $this->fontSize,
+            'font-style' => $this->fontStyle,
+            'font-weight' => $this->fontWeight,
+            'line-height' => $this->lineHeight,
+            'letter-spacing' => $this->letterSpacing,
+            'text-decoration' => $this->textDecoration,
+            'text-transform' => $this->textTransform,
+        ];
+
+        $styles = [];
+
+        foreach ($properties as $property => $attr) {
+            if ($attr->isNotEmpty()) {
+                $styles[] = $property . ': ' . $attr->asAttr();
+            }
+        }
+
+        return $styles;
+    }
+}
+
+class CellStyles {
+    /** @var Sides */
+    public $padding;
+
+    /** @var StringAttr */
+    public $elementGap;
+
+    /** @var StringAttr */
+    public $verticalAlign;
+
+    /** @var StringAttr */
+    public $backgroundColor;
+
+    /** @var StringAttr */
+    public $headerBackgroundColor;
+
+    /** @var StringAttr */
+    public $footerBackgroundColor;
+
+    /** @var StringAttr */
+    public $evenRowBackgroundColor;
+
+    /** @var StringAttr */
+    public $oddRowBackgroundColor;
+
+    /** @var Sides */
+    public $border;
+
+    /** @var Corners */
+    public $borderRadius;
+
+    /** @var array<int, array{array{int, int}, array<string, mixed>}> */
+    public $cells;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $d = TableAttrs::get_cell_style_defaults();
+
+        $instance = new self();
+        $instance->padding = Sides::from_array(getOrNull($data['padding']), $d['padding']);
+        $instance->elementGap = new StringAttr(
+            getOrNull($data['elementGap']),
+            $d['elementGap']
+        );
+        $instance->verticalAlign = new StringAttr(
+            getOrNull($data['verticalAlign']),
+            $d['verticalAlign'],
+            ['top', 'middle', 'bottom']
+        );
+        $instance->backgroundColor = new StringAttr(getOrNull($data['backgroundColor']), $d['backgroundColor']);
+        $instance->headerBackgroundColor = new StringAttr(getOrNull($data['headerBackgroundColor']), $d['headerBackgroundColor']);
+        $instance->footerBackgroundColor = new StringAttr(getOrNull($data['footerBackgroundColor']), $d['footerBackgroundColor']);
+        $instance->evenRowBackgroundColor = new StringAttr(getOrNull($data['evenRowBackgroundColor']), $d['evenRowBackgroundColor']);
+        $instance->oddRowBackgroundColor = new StringAttr(getOrNull($data['oddRowBackgroundColor']), $d['oddRowBackgroundColor']);
+        $instance->border = Sides::from_array(getOrNull($data['border']), $d['border']);
+        $instance->borderRadius = Corners::from_array(getOrNull($data['borderRadius']), $d['borderRadius']);
+        $instance->cells = is_array(getOrNull($data['cells'])) ? $data['cells'] : $d['cells'];
+
+        return $instance;
+    }
+}
+
+class Span {
+    /** @var NumberAttr */
+    public $rowSpan;
+
+    /** @var NumberAttr */
+    public $colSpan;
+
+    /**
+     * @param array|null $data
+     * @param array<string, int> $defaults
+     * @return self
+     */
+    public static function from_array($data, $defaults = ['rowSpan' => 1, 'colSpan' => 1]) {
+        $data = is_array($data) ? $data : [];
+
+        $defaultRowSpan = $defaults['rowSpan'];
+        $defaultColSpan = $defaults['colSpan'];
+
+        $instance = new self();
+        $instance->rowSpan = new NumberAttr(getOrNull($data['rowSpan']), $defaultRowSpan);
+        $instance->colSpan = new NumberAttr(getOrNull($data['colSpan']), $defaultColSpan);
+
+        return $instance;
+    }
+}
+
+class ColumnConfig {
+    /** @var StringAttr|null */
+    public $width;
+
+    /** @return self */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $width = getOrNull($data['width']);
+
+        $instance = new self();
+
+        if ($width === null || $width === '') {
+            $instance->width = null;
+        } else {
+            $instance->width = new StringAttr($width, '');
+        }
+
+        return $instance;
+    }
+}
+
+class RowConfig {
+    /** @var StringAttr|null */
+    public $height;
+
+    /**
+     * Every attribute the row block carried, untouched. Pro registers row
+     * attributes of its own (e.g. backgroundColor), so its renderer reads
+     * them from here rather than free having to know their names.
+     *
+     * @var array<string, mixed>
+     */
+    public $attrs;
+
+    /**
+     * @param array|null $data
+     * @return self
+     */
+    public static function from_array($data) {
+        $data = is_array($data) ? $data : [];
+        $height = getOrNull($data['height']);
+
+        $instance = new self();
+        $instance->attrs = $data;
+
+        if ($height === null || $height === '') {
+            $instance->height = null;
+        } else {
+            $instance->height = new StringAttr($height, '');
+        }
+
+        return $instance;
+    }
+}
+
+class CellElement {
+    /** @var StringAttr */
+    public $name;
+
+    /** @var array<string, mixed> */
+    public $attributes;
+
+    /** @var array<string, mixed>|null */
+    public $bindings;
+
+    /**
+     * @param array|null $data
+     * @param string $defaultName
+     * @param array<int, string>|null $allowedNames
+     * @return self
+     */
+    public static function from_array($data, $defaultName = 'text', $allowedNames = null) {
+        $data = is_array($data) ? $data : [];
+
+        if (!is_array($allowedNames)) {
+            $allowedNames = [
+                'text',
+                'button',
+                'image',
+                'list',
+                'icon',
+                'star-rating',
+                'custom-html',
+                'styled-list',
+            ];
+        }
+
+        $instance = new self();
+        $instance->name = new StringAttr(getOrNull($data['name']), $defaultName, $allowedNames);
+        $attributes = getOrNull($data['attributes']);
+        $instance->attributes = is_array($attributes) ? $attributes : [];
+        $bindings = getOrNull($data['bindings']);
+        $instance->bindings = is_array($bindings) ? $bindings : null;
+
+        return $instance;
+    }
+}

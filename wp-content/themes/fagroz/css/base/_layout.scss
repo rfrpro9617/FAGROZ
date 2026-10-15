@@ -1,0 +1,23 @@
+﻿@use "../abstracts" as *;
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+
+  @media (max-width: $breakpoint-xs) {
+    padding-inline: 1rem;
+  }
+}
+
+.section--small {
+  padding-block: $space-7;
+}
+
+.section {
+  padding-block: $space-9;
+}
+
+.section--large {
+  padding-block: $space-10;
+}

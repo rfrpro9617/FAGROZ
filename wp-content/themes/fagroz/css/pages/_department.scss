@@ -1,0 +1,254 @@
+.departments {
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-inline: clamp(1rem, 5vw, 4rem);
+  }
+
+  &__text {
+    width: min(100%, 900px);
+    text-align: center;
+  }
+
+  &__paragraph {
+    margin: 0;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    text-align: center;
+  }
+}
+
+.departments-section {
+  padding-bottom: 5rem;
+
+  &--programs {
+    background: #fafafa;
+  }
+}
+
+.departments-programs__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.departments-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.12);
+
+    .departments-card__image img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    background: #e0e0e0;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    background: rgba(242, 197, 0, 0.12);
+    color: #4f555d;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 1.2;
+    color: #111111;
+    font-weight: 700;
+  }
+
+  &__description {
+    margin: 0;
+    color: #4f555d;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+}
+
+.btn-departments {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.8rem;
+  border-radius: 999px;
+  background: #f2c500;
+  color: #111111;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform .25s ease, background .25s ease;
+  border: 2px solid transparent;
+  gap: 8px;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: #e0b400;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.departments-callout {
+  background: linear-gradient(135deg, #7f5f51 0%, #5f4339 100%);
+  border-radius: 32px;
+  color: #ffffff;
+  overflow: hidden;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: minmax(280px, 1.2fr) minmax(320px, 1fr);
+    gap: 3rem;
+    align-items: center;
+    padding: 4rem 2rem;
+  }
+
+  &__hero h2 {
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
+    line-height: 1.1;
+    font-weight: 700;
+  }
+
+  &__copy p {
+    margin: 0;
+    line-height: 1.8;
+    max-width: 56ch;
+    font-size: 1.05rem;
+  }
+}
+
+/* ==========================================================
+   RESPONSIVO
+========================================================== */
+
+@media (max-width: 1024px) {
+  .departments-programs__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .departments-callout__inner {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .departments-section {
+    padding-bottom: 3rem;
+
+    &--programs {
+      padding: 2.5rem 0;
+    }
+  }
+
+  .departments-programs__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .departments-callout__inner {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .departments-callout__hero h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  .departments-card__body {
+    padding: 1.5rem;
+  }
+
+  .departments-card__title {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .departments-section {
+    padding-bottom: 2rem;
+
+    &--programs {
+      padding: 1.5rem 0;
+    }
+  }
+
+  .departments-programs__grid {
+    gap: 1rem;
+  }
+
+  .departments-card__body {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .departments-card__label {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .departments-card__description {
+    font-size: 0.9rem;
+  }
+
+  .btn-departments {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .departments-callout__inner {
+    padding: 2rem 1rem;
+  }
+
+  .departments-callout__copy p {
+    font-size: 0.95rem;
+  }
+}
+

@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'dotcamp/tableberg',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '295f7f717c5960f534922772cc12c4c211370473',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'dotcamp/tableberg' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '295f7f717c5960f534922772cc12c4c211370473',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'freemius/wordpress-sdk' => array(
+            'pretty_version' => '2.13.4',
+            'version' => '2.13.4.0',
+            'reference' => 'fa43eb92ae9dffa0d9f5ae11b5a1739bd7222308',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../freemius',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'php-stubs/wordpress-stubs' => array(
+            'pretty_version' => 'v6.9.1',
+            'version' => '6.9.1.0',
+            'reference' => 'f12220f303e0d7c0844c0e5e957b0c3cee48d2f7',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-stubs/wordpress-stubs',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+    ),
+);

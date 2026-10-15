@@ -1,0 +1,115 @@
+/**
+ * Accessibility Widgets Alignment
+ * Controla o posicionamento de plugins externos como VLibras e UserWay
+ * para que fiquem alinhados corretamente no mobile e desktop
+ */
+
+// VLibras Widget
+[id="vLibras"],
+#vLibras {
+  position: fixed !important;
+  right: 2rem !important;
+  bottom: 3.5rem !important;
+  z-index: 9998 !important;
+
+  @media (max-width: 768px) {
+    right: 1rem !important;
+    bottom: 9rem !important;
+  }
+
+  @media (max-width: 480px) {
+    right: 0.75rem !important;
+    bottom: 9rem !important;
+  }
+}
+
+// UserWay Main Container
+.uwy {
+  position: fixed !important;
+  right: 2rem !important;
+  bottom: 6rem !important;
+  z-index: 9999 !important;
+
+  @media (max-width: 768px) {
+    right: 1rem !important;
+    bottom: 12rem !important;
+  }
+
+  @media (max-width: 480px) {
+    right: 0.75rem !important;
+    bottom: 12rem !important;
+  }
+}
+
+// UserWay iframe
+iframe.userway_p2 {
+  position: fixed !important;
+  right: 2rem !important;
+  bottom: 6rem !important;
+  z-index: 9999 !important;
+
+  @media (max-width: 768px) {
+    right: 1rem !important;
+    bottom: 12rem !important;
+  }
+
+  @media (max-width: 480px) {
+    right: 0.75rem !important;
+    bottom: 12rem !important;
+  }
+}
+
+// UserWay check element
+.userway_check_on {
+  position: fixed !important;
+  right: 2rem !important;
+  bottom: 6rem !important;
+  z-index: 9999 !important;
+
+  @media (max-width: 768px) {
+    right: 1rem !important;
+    bottom: 12rem !important;
+  }
+
+  @media (max-width: 480px) {
+    right: 0.75rem !important;
+    bottom: 12rem !important;
+  }
+}
+
+// UserWay Badge
+.userway-badge {
+  position: fixed !important;
+  right: 2rem !important;
+  bottom: 6rem !important;
+  z-index: 9999 !important;
+
+  @media (max-width: 768px) {
+    right: 1rem !important;
+    bottom: 12rem !important;
+  }
+
+  @media (max-width: 480px) {
+    right: 0.75rem !important;
+    bottom: 12rem !important;
+  }
+}
+
+// UserWay Container
+.userway_p2_container {
+  position: fixed !important;
+  right: 2rem !important;
+  bottom: 6rem !important;
+  z-index: 9999 !important;
+
+  @media (max-width: 768px) {
+    right: 1rem !important;
+    bottom: 12rem !important;
+  }
+
+  @media (max-width: 480px) {
+    right: 0.75rem !important;
+    bottom: 12rem !important;
+  }
+}
+
